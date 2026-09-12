@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swim practice</title>
+  <style>
+    :root {
+      --tile: #e4ecee;
+      --ink: #0f2436;
+      --muted: #4d6475;
+      --rope: #d62839;
+      --line: #c3cfd4;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--tile);
+      color: var(--ink);
+      font: 400 1rem/1.55 "Avenir Next", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    }
+
+    main {
+      max-width: 1032px;
+      margin: 0 auto;
+      padding: 40px 16px;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #d3d7d6;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 32px;
+      margin-top: 16px;
+    }
+
+    .controls label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    input[type="range"] { width: 180px; accent-color: var(--rope); }
+    input[type="checkbox"] { width: 18px; height: 18px; margin: 0; accent-color: var(--rope); }
+
+    output {
+      min-width: 4.5em;
+      color: var(--muted);
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--rope);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 760px) {
+      main { padding: 24px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <canvas id="scene" width="1000" height="320" role="img"
+            aria-label="Top-down view of a lane of a pool with an animated freestyle swimmer and a pace clock">
+      Your browser doesn't support the canvas element.
+    </canvas>
+
+    <div class="controls">
+      <label for="speed">Speed
+        <input id="speed" type="range" min="0" max="2" step="0.05" value="1">
+        <output id="speed-value" for="speed">1.00×</output>
+      </label>
+      <label for="show-joints">
+        <input id="show-joints" type="checkbox">
+        Show joints
+      </label>
+    </div>
+  </main>
+
+  <script src="engine.js"></script>
+  <script src="scene.js"></script>
+</body>
+</html>
